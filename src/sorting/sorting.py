@@ -5,6 +5,27 @@ def merge(arrA, arrB):
 
     # Your code here
 
+    a = 0
+    b = 0
+    for i in range(0, elements):
+        #compare a and b
+
+        # push into b array and iterate
+        if a >= len(arrA):
+            merged_arr[i] = arrB[b]
+            b = b + 1
+        # greater/equal to arrB?
+        # push into a array and iterate through array a   
+        elif b>= len(arrB):
+            merged_arr[i] =arrA[a]
+            a = a + 1
+        #arrA index is smaller: put into merged array
+        elif arrA[a] < arrB[b]:
+            merged_arr[i] = arrA[a]
+            a = a+ 1
+        else:
+            merged_arr[i] =arrB[b]
+            b = b + 1 
 
     return merged_arr
 
@@ -12,6 +33,15 @@ def merge(arrA, arrB):
 def merge_sort(arr):
     # Your code here
 
+    # stop splitting when arrays reach a length of 1
+    if len(arr) > 1:
+        middle = len(arr)//2  # find middle index of array
+        arrLeft = arr[:middle] # values less than middle
+        arrRight = arr[middle:] # values greater than middle
+
+        left = merge_sort(arrLeft) # merge_sort the left side
+        right = merge_sort(arrRight) # merge_sort the right side
+        arr = merge(left, right)    # merge both sorted left and right sides together
 
     return arr
 
@@ -19,10 +49,10 @@ def merge_sort(arr):
 # utilize any extra memory
 # In other words, your implementation should not allocate any additional lists 
 # or data structures; it can only re-use the memory it was given as input
-def merge_in_place(arr, start, mid, end):
+#def merge_in_place(arr, start, mid, end):
     # Your code here
 
 
-def merge_sort_in_place(arr, l, r):
+#def merge_sort_in_place(arr, l, r):
     # Your code here
 
